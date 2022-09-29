@@ -1,0 +1,52 @@
+import Box from '@mui/material/Box';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import languages from '../../data/language.json';
+import { setLanguageGlobal } from '../../features/language';
+
+const ChooseLanguage = () => {
+	const lang = useSelector(state => state.language.current);
+	const [language, setLanguage] = useState(
+		{
+			id: "en",
+			path: "",
+			display: "English",
+			label: "Language"
+		}
+	);
+	const dispatch = useDispatch();
+
+	const handleChange = (event) => {
+		dispatch(setLanguageGlobal(event.target.value));
+	};
+
+	useEffect(() => {
+		const l = languages.find(item => item.id === lang);
+		setLanguage(l);
+	}, [lang])
+	return (
+		<Box sx={{ minWidth: 120 }} >
+      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+				<InputLabel id="language">{ language.label}</InputLabel>
+        <Select
+          labelId="language"
+          value={language.id}
+          label={language.label}
+          onChange={handleChange}
+				>
+					{
+						languages.map(item => 
+							<MenuItem key={ item.id} value={item.id}>{ item.display}</MenuItem>
+						)
+					}
+        </Select>
+      </FormControl>
+    </Box>
+	)
+}
+
+export default ChooseLanguage

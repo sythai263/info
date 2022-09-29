@@ -1,0 +1,14 @@
+[
+	{
+		"id": "en",
+		"path": "data/en",
+		"display": "English",
+		"label": "Language"
+	},
+	{
+		"id": "vi",
+		"path": "data/vi",
+		"display": "Tiếng Việt",
+		"label": "Ngôn ngữ"
+	}
+]
