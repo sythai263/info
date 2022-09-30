@@ -1,8 +1,10 @@
+import { ExpandMoreRounded } from '@mui/icons-material';
 import Box from '@mui/material/Box';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import getUnicodeFlagIcon from 'country-flag-icons/unicode';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import languages from '../../data/language.json';
@@ -15,7 +17,8 @@ const ChooseLanguage = () => {
 			id: "en",
 			path: "",
 			display: "English",
-			label: "Language"
+			label: "Language",
+			flag: "EN"
 		}
 	);
 	const dispatch = useDispatch();
@@ -30,17 +33,29 @@ const ChooseLanguage = () => {
 	}, [lang])
 	return (
 		<Box sx={{ minWidth: 120 }} >
-      <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-				<InputLabel id="language">{ language.label}</InputLabel>
-        <Select
-          labelId="language"
+      <FormControl  size="small">
+				<InputLabel id="language" sx={{
+					color: '#fff',
+					'&.Mui-focused': {
+            color: '#fff',
+        	},
+				}}>{language.label}</InputLabel>
+				<Select
+					disableUnderline
+					IconComponent={ExpandMoreRounded}
+					labelId="language"
+					sx={{
+						'&.Mui-focused': {
+							borderColor: '#fff',
+						},
+					}}
           value={language.id}
-          label={language.label}
-          onChange={handleChange}
+					label={language.label}
+					onChange={handleChange}
 				>
 					{
 						languages.map(item => 
-							<MenuItem key={ item.id} value={item.id}>{ item.display}</MenuItem>
+							<MenuItem key={item.id} value={item.id}>{ getUnicodeFlagIcon(item.flag)} { item.display}</MenuItem>
 						)
 					}
         </Select>

@@ -11,6 +11,7 @@ import DrawerComponent from '../Navbar/Drawer';
 import ChooseLanguage from './ChooseLanguage';
 import ChooseTheme from './ChooseTheme';
 
+
 const Navbar = () => {
   
   const [pages, setPages] = useState([])
@@ -29,7 +30,7 @@ const Navbar = () => {
 
   return (
      <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav">
+      <AppBar component="nav" color='secondary'>
         <Toolbar>
           <Link href='/' color='inherit'>
             <Avatar src='/logo.svg' alt='logo' />

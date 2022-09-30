@@ -17,16 +17,29 @@ function App() {
     palette: {
       mode: curr ? curr : "dark",
       primary: {
-        main: "#ff6f00",
-        light: "#ffa040",
-        dark: "#c43e00",
+        main: "#c84b31",
+        light: "#ff7b5c",
+        dark: "#911708",
         contrastText: "#ffffff",
       },
       secondary: {
-        main: "#f5eb6d",
-        light: "#ffff9e",
-        dark: "#c0b93c",
+        main: "#2d4263",
+        light: "#5a6d91",
+        dark: "#001c39",
         contrastText: "#ffffff",
+      },
+    },
+    components: {
+      MuiSelect: {
+        styleOverrides: {
+          select: {
+            color: "#fff",
+            borderColor: "#fff",
+          },
+          icon: {
+            color: "#fff",
+          },
+        },
       },
     },
   });

@@ -3,12 +3,14 @@
 		"id": "en",
 		"path": "data/en",
 		"display": "English",
-		"label": "Language"
+		"label": "Language",
+		"flag": "US"
 	},
 	{
 		"id": "vi",
 		"path": "data/vi",
 		"display": "Tiếng Việt",
-		"label": "Ngôn ngữ"
+		"label": "Ngôn ngữ",
+		"flag": "VN"
 	}
 ]

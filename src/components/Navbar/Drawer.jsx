@@ -1,10 +1,11 @@
 import {
+	Box,
+	Divider,
 	Drawer,
 	IconButton,
 	Link,
 	List,
-	ListItemButton,
-	ListItemIcon
+	ListItemButton, useTheme
 } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -18,6 +19,8 @@ const DrawerComp = () => {
 	const [openDrawer, setOpenDrawer] = useState(false);
 	const [navItems, setNavItem] = useState([]);
 	const lang = useSelector(state => state.language.current);
+	const theme = useTheme();
+	const curr = useSelector(state => state.theme.current);
 	
 	useEffect(() => {
 		const l = languages.find(item => item.id === lang);
@@ -30,25 +33,39 @@ const DrawerComp = () => {
     <React.Fragment>
       <Drawer
         open={openDrawer}
-        onClose={() => setOpenDrawer(false)}
+				onClose={() => setOpenDrawer(false)}
         PaperProps={{
-          sx: { width: '190px' },
+					sx: {
+						width: '190px',
+						background: curr === 'dark'? theme.palette.grey[900] :theme.palette.secondary.main,
+					},
 				}}>
-				
-				<List>
-          {navItems.map((page, index) => (
-            <ListItemButton key={index} onClick={() => setOpenDrawer(false)}>
-              <ListItemIcon>
-                <Link color='inherit' underline='none'>
-                  {page}
-                </Link>
-              </ListItemIcon>
-            </ListItemButton>
-          ))}
-				</List>
-				<ChooseTheme/>
-				<ChooseLanguage/>
-      </Drawer>
+				<Box
+					sx={{ textAlign: 'center' }}
+					display='flex'
+					flexDirection='column'
+					justifyContent='space-between'>
+					<List>
+          	{navItems.map((page, index) => (
+							<ListItemButton
+								sx={{ textAlign: 'center' }}
+								key={index}
+								onClick={() => setOpenDrawer(false)}>
+									<Link color='#fff' underline='none'>
+										{page}
+									</Link>
+							</ListItemButton>
+						))}
+					</List>
+					<Divider />
+					<Box marginTop={2}>
+						<ChooseLanguage/>
+					</Box>
+					<Box sx={{marginTop:'auto'}}>
+						<ChooseTheme/>
+					</Box>
+				</Box>
+			</Drawer>
       <IconButton
         sx={{ color: 'white', marginLeft: 'auto' }}
         onClick={() => setOpenDrawer(!openDrawer)}>
