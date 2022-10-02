@@ -16,7 +16,9 @@
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-icons": "^4.4.0",
+		"react-material-ui-carousel": "^3.4.2",
 		"react-redux": "^8.0.4",
+		"react-router-dom": "^6.4.1",
 		"react-scripts": "5.0.1",
 		"web-vitals": "^2.1.4"
 	},
@@ -24,7 +26,9 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"lint": "eslint './src/**/*.{js,jsx}'",
+		"lint:fix": "eslint './src/**/*.{js,jsx}' --fix"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -48,5 +52,11 @@
 		"fs": false,
 		"path": false,
 		"os": false
+	},
+	"devDependencies": {
+		"eslint": "^8.24.0",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-react": "^7.31.8"
 	}
 }

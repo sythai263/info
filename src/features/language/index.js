@@ -1,13 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+const lang = localStorage.getItem('language');
 
 const languageReducer = createSlice({
-  name: "language",
+  name: 'language',
   initialState: {
-    current: "en",
+    current: lang ? lang : 'en',
   },
   reducers: {
     setLanguageGlobal(state, { payload }) {
       state.current = payload;
+      localStorage.setItem('language', payload);
     },
   },
 });
